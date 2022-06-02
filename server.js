@@ -1,8 +1,8 @@
 ///////////////////////////////
 // DEPENDENCIES
 ////////////////////////////////
-const PORT = process.envPORT|| 3001
 require("dotenv").config()
+const PORT = process.env.PORT|| 3001
 const express = require("express")
 const mongoose = require("mongoose")
 
@@ -44,6 +44,32 @@ app.get("/", (req,res)=> {
     res.send('<iframe src="https://giphy.com/embed/m3Ly8kCCAfj4xofPfB" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/IntoAction-stop-listen-collaborate-m3Ly8kCCAfj4xofPfB">via GIPHY</a></p>')
 })
 
+
+
+
+
+
+
+
+
+
+
+
+app.delete('/bookmarks/:id', async (req,res)=>{
+    try{
+        res.json(await Bookmark.findByIdAndDelete(req.params.id))
+    } catch(err){
+        res.status(400).json(err)
+    }
+})
+
+app.put('/bookmarks/:id', async (req,res)=>{
+    try{
+        res.json(await Bookmark.findByIdAndUpdate(req.params.id, req.body, {new:true}))
+    }catch(err){
+        res.status(400).json(err)
+    }
+})
 
 //Listener
 app.listen(PORT, () => console.log(`listening on port ${PORT} STOP! Collaborate and listen!`))
