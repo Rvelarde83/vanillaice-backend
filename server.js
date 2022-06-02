@@ -1,7 +1,7 @@
 ///////////////////////////////
 // DEPENDENCIES
 ////////////////////////////////
-const PORT = process.envPORT|| 3001
+const PORT = process.env.PORT || 3001
 require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
