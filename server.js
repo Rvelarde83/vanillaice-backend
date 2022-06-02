@@ -64,6 +64,32 @@ app.post("/bookmarks", async (req, res) => {
 })
 
 
+
+
+
+
+
+
+
+
+
+
+app.delete('/bookmarks/:id', async (req,res)=>{
+    try{
+        res.json(await Bookmark.findByIdAndDelete(req.params.id))
+    } catch(err){
+        res.status(400).json(err)
+    }
+})
+
+app.put('/bookmarks/:id', async (req,res)=>{
+    try{
+        res.json(await Bookmark.findByIdAndUpdate(req.params.id, req.body, {new:true}))
+    }catch(err){
+        res.status(400).json(err)
+    }
+})
+
 //Listener
 app.listen(PORT, () => console.log(`listening on port ${PORT} STOP! Collaborate and listen!`))
 
