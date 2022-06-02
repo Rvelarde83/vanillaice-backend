@@ -1,8 +1,9 @@
 ///////////////////////////////
 // DEPENDENCIES
 ////////////////////////////////
+
 require("dotenv").config()
-const PORT = process.envPORT || 3001
+const PORT = process.env.PORT||3001
 const express = require("express")
 const mongoose = require("mongoose")
 
@@ -66,4 +67,4 @@ app.post("/bookmarks", async (req, res) => {
 //Listener
 app.listen(PORT, () => console.log(`listening on port ${PORT} STOP! Collaborate and listen!`))
 
-
+console.log(PORT)
