@@ -6,7 +6,7 @@ require("dotenv").config()
 const PORT = process.env.PORT||3001
 const express = require("express")
 const mongoose = require("mongoose")
-
+const Bookmark = require("./Bookmark")
 const app = express()
 const cors = require("cors")
 const morgan = require("morgan")
